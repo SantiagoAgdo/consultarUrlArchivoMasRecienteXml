@@ -1,0 +1,131 @@
+openapi: 3.0.1
+servers:
+  - description: Index swagger
+    url: https://api.mibanco.com.co
+info:
+  description: Entidad para Historial Consulta de Cliente en Central de Riesgo
+  version: 0.0.1
+  title: HistorialConsultaClienteCentralRiesgoES
+  contact:
+    name: MiBanco
+    url: https://www.mibanco.com.co/
+    email: api@mibanco.com.co
+  license:
+    name: GNU GPLv3
+    url: ‘https://www.gnu.org/licenses/gpl-3.0.html’
+tags:
+  - name: HistorialConsultaClienteCentralRiesgoES
+    description: Entidad para Historial Consulta de Cliente en Central de Riesgo
+#----------------------------
+#Endpoints de ES
+#----------------------------
+paths:
+  /v1/es/historialCentralRiesgo/{tipoDocumento}/{numeroDocumento}/{digitoVerificacion}:
+    get:
+      summary: consultarUrlArchivoMasRecienteXml
+      operationId: consultarUrlArchivoMasRecienteXml
+      parameters:
+        - in: path
+          name: tipoDocumento
+          required: true
+          schema:
+            $ref: "#/components/schemas/TipoDocumentoEnum"
+          description: tipo de documento
+        - in: path
+          name: numeroDocumento
+          required: true
+          schema:
+            type: integer
+          description: numero de documento
+        - in: path
+          name: digitoVerificacion
+          required: true
+          schema:
+            type: integer
+          description: digito de verificacion
+      responses:
+        "200":
+          description: get Pasivo por numeroCliente.
+          content:
+            application/json:
+              schema:
+                type: string
+        "400":
+          description: Peticion con datos invalidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        "404":
+          description: "No se encuentra el consultarUrlArchivoMasRecienteXml FIC."
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+
+#---------------------------------------------
+#Se declaran los Modelos/Schemas del servicio
+#---------------------------------------------
+
+components:
+  schemas:
+    #    TYPES
+    consultarUrlArchivoMasRecienteXmlInput:
+      type: object
+      properties:
+        tipoDocumento:
+          $ref: "#/components/schemas/TipoDocumentoEnum"
+        numeroDocumento:
+          type: string
+        digitoVerificacion:
+          type: string
+    consultarUrlArchivoMasRecienteXmlOutput:
+      type: object
+      properties:
+        url:
+          type: string
+
+    #ENUMS
+    TipoDocumentoEnum:
+      type: string
+      enum:
+        - CC
+        - TI
+        - CDI
+        - CE
+        - CPA
+        - NIT
+        - PAS
+        - RCN
+        - RUT
+        - TE
+        - RUMC
+
+    Error:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 400
+        message:
+          type: string
+          example: "The request is invalid."
+      required:
+        - status
+        - message
+  responses:
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

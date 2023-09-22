@@ -1,0 +1,272 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.mibanco.historialconsultaclientecentralriesgo.es";
+option java_outer_classname = "HistorialConsultaClienteCentralRiesgo";
+
+package HistorialConsultaClienteCentralRiesgo;
+
+//messages GeneracionPDF
+message GenerarPdfRiesgoConsultaDetallada {
+  ClienteBase cliente = 1;
+  CentralRiesgo centralRiesgo = 2;
+}
+
+message ClienteBase{
+  int32 numeroCliente = 1;
+  string primerNombre = 2;
+  string segundoNombre = 3;
+  string primerApellido = 4;
+  string segundoApellido = 5;
+  string tipoDocumento = 6;
+  string numeroDocumento = 7;
+  int32 fechaExpedicionDocumento = 8;
+  string tipoPersona = 9;
+  string correoElectronico = 10;
+  int32 numeroCelular = 11;
+}
+
+message CentralRiesgo{
+  string antiguedadUbicacion = 1;
+  ConsultaDetallada consultaDetallada = 2;
+  string estadoDocumento = 3;
+  string fechaConsultaMasReciente = 4;
+  string fechaExpedicion = 5;
+  string genero = 6;
+  string historicoEndeudamiento = 7;
+  string lugarExpedicion = 8;
+  string numeroDocumento = 9;
+  string rangoEdad = 10;
+  string resultadoConsultaMasReciente = 11;
+  bool tieneRUT = 12;
+  string tipoDocumento = 13;
+  string tipoRelacion = 14;
+  string tipoReporte = 15;
+  bool vbVigenteParaSerConsultado = 16;
+  string digitoVerificacion = 17;
+}
+
+message ConsultaDetallada{
+  repeated AnalisisVector analisisVector = 1;
+  repeated EndeudamientoActual endeudamientoActual = 2;
+  EndeudamientoActualTotal endeudamientoActualTotal = 3;
+  repeated EndeudamientoGlobal endeudamientoGlobal = 4;
+  repeated EvolucionDeuda evolucionDeuda = 5;
+  repeated HabitoDePagoAbiertas habitoDePagoAbiertas = 6;
+  repeated HabitoDePagoCerradas habitoDePagoCerradas = 7;
+  repeated HistoricoConsulta historicoConsulta = 8;
+  repeated PerfilSector perfilSector = 9;
+  repeated PerfilSectorTotal perfilSectorTotal = 10;
+  repeated ResumenEndeudamientoGlobal resumenEndeudamientoGlobal = 11;
+  repeated SaldosYMoras saldosYMoras = 12;
+}
+
+message SaldosYMoras{
+  string morasMaxSectorReal = 1;
+  string morasMaxSectorTelcos = 2;
+  float numCreditosConMoraIgual30Dias = 3;
+  float numCreditosConMoraIMayorOIgual60Dias = 4;
+  string periodoSaldoYMoras = 5;
+  float saldoDeudaTotal = 6;
+  float saldoDeudaTotalEnMora = 7;
+  string totalMorasMaximas = 8;
+}
+
+message ResumenEndeudamientoGlobal{
+  string fechaCorte = 1;
+  repeated DetalleResumenEndeudamientoGlobal detalleResumenEndeudamientoGlobal = 2;
+}
+
+message DetalleResumenEndeudamientoGlobal{
+  string sector = 1;
+  float comercialMiles = 2;
+  int32 comercialNumero = 3;
+  float hipotecarioMiles = 4 ;
+  int32 hipotecarioNumero = 5;
+  float consumoYTarjetaCreditoMiles = 6 ;
+  int32 consumoYTarjetaCreditoNumero = 7;
+  float microcreditoMiles = 8 ;
+  int32 microcreditoNumero = 9;
+  float porcentajeParticipacion = 10;
+}
+
+message HistoricoConsulta{
+  string ciudad = 1;
+  string consultanteMotivoConsulta = 2;
+  string fecha = 3;
+  int32 numeroConsultas = 4;
+  string oficina = 5;
+  string tipoCuenta = 6;
+}
+
+message PerfilSector{
+  string antiguedadDesde = 1;
+  int32 consultaUltimos6Meses = 2;
+  int32 creditosCerrados = 3;
+  int32 creditosReestructurados = 4;
+  int32 creditosRefinanciados = 5;
+  int32 creditosVigentes = 6;
+  int32 desacuerdosVigentesAFecha = 7;
+  string sector = 8;
+}
+
+message PerfilSectorTotal{
+  string antiguedadDesde = 1;
+  int32 consultaUltimos6Meses = 2;
+  int32 creditosCerrados = 3;
+  int32 creditosReestructurados = 4;
+  int32 creditosRefinanciados = 5;
+  int32 creditosVigentes = 6;
+  int32 desacuerdosVigentesAFecha = 7;
+  string totalSector = 8;
+}
+
+message HabitoDePagoCerradas{
+  string _47meses = 1;
+  string adjetivoFecha = 2;
+  string calificacion = 3;
+  string ciudadFechaVencimiento = 4;
+  string desacuerdoInformacion = 5;
+  string entidadInformante = 6;
+  string estadoObligacion = 7;
+  string fechaApertura = 8;
+  string fechaCierre = 9;
+  int32 numeroCuenta = 10;
+  string oficinaDeudor = 11;
+  string sector = 12;
+  string tipoCuenta = 13;
+  float vrlOCupoInicial = 14;
+}
+
+message HabitoDePagoAbiertas{
+  string _47meses = 1;
+  string adjetivoFecha = 2;
+  string calificacion = 3;
+  string cuotasMVigencia = 4;
+  string desacuerdoInformacion = 5;
+  string entidadInformante = 6;
+  string estadoObligacion = 7;
+  string estadoTitular = 8;
+  string fechaActualizacion = 9;
+  string fechaApertura = 10;
+  string fechaLimitePago = 11;
+  string fechaPago = 12;
+  string fechaVencimiento = 13;
+  string marcaClase = 14;
+  string moraMaxima = 15;
+  int32 numeroCuenta = 16;
+  int32 numeroChequeDevueltos = 17;
+  string oficinaDeudor = 18;
+  int32 perm = 19;
+  float porcentajeDeuda = 20;
+  float saldoActual = 21;
+  float saldoMora = 22;
+  string sector = 23;
+  string tipoCuenta = 24;
+  string tipoGarantia = 25;
+  float valorCuota = 26;
+  float vrlOcupoInicial = 27;
+}
+
+message EvolucionDeuda{
+  repeated  EvolucionDetalle evolucionDetalle = 1;
+  string trimestre = 2;
+}
+message EvolucionDetalle{
+  string sector = 1;
+  string cartera = 2;
+  float cupoInicial = 3;
+  float saldo = 4;
+  float saldoEnMora = 5;
+  float valorCuota = 6;
+  float porcentajeDeuda = 7;
+  string menorCalificacion = 8;
+}
+
+message EndeudamientoGlobal{
+  string sector = 1;
+  float comercialMiles = 2;
+  int32 comercialNumero = 3;
+  string entidadInformante = 4;
+  string calificacion = 5;
+  float hipotecarioMiles = 6;
+  int32 hipotecarioNumero = 7;
+  int32 numero = 8;
+  float consumoYTarjetaCreditoMiles = 9;
+  float saldoTotal = 10;
+  int32 consumoYTarjetaCreditoNumero = 11;
+  float microcreditoMiles = 12;
+  int32 microcreditoNumero = 13;
+  string garantiaTipo = 14;
+  string garantiafechaAvaluo = 15;
+  float garantiaValor = 16;
+  string moneda = 17;
+  string fuente = 18;
+}
+
+
+message AnalisisVector{
+  string sector = 1;
+  string entidad = 2;
+  int32 numCuenta = 3;
+  string tipoCuenta = 4;
+  string estado = 5;
+  string periodo = 6;
+}
+
+message EndeudamientoActual{
+  string calidad = 1;
+  string calificacion = 2;
+  string cartera = 3;
+  string estadoEndeudamientoActual = 4;
+  float porcentajeDeuda = 5;
+  float porcentajePart = 6;
+  float saldoActual = 7;
+  float saldoEnMora = 8;
+  string sector = 9;
+  float valorCuota = 10;
+  float vlrOCupoInicial = 11;
+}
+
+message EndeudamientoActualTotal{
+  float porcentajeDeuda = 1;
+  float porcentajePart = 2;
+  float saldoActual = 3;
+  float saldoEnMora = 4;
+  float valorCuota = 5;
+  float vlrOCupoInicial = 6;
+}
+
+message GenerarRiesgoConsultaDetalladaInput{
+  string tipoDocumento = 1;
+  string numeroDocumento = 2;
+  string digitoVerificacion = 3;
+}
+
+message ResponseDataGenerarPdfRiesgoConsultaDetallada{
+  GenerarPdfRiesgoConsultaDetallada obj = 1;
+}
+
+message ResponseGenerarRiesgoConsultaDetallada{
+  bool obj = 1;
+}
+
+// messages Historial
+message ConsultarUrlArchivoMasRecienteXmlInput {
+  string tipoDocumento = 1;
+  string numeroDocumento = 2;
+  string digitoVerificacion = 3;
+}
+
+message  ResponseConsultaUrlArchivoMasRecienteXmlOutput{
+  string url = 1;
+}
+
+service ConsultarUrlArchivoMasRecienteXmlGrpc{
+  //rpc GeneracionPdf
+  rpc generarRiesgoHistoricoEndeudamiento(GenerarRiesgoConsultaDetalladaInput) returns (ResponseGenerarRiesgoConsultaDetallada);
+
+  //rpc HistorialConsultaRiesgo
+  rpc consultarUrlArchivoMasRecienteXml(ConsultarUrlArchivoMasRecienteXmlInput) returns (ResponseConsultaUrlArchivoMasRecienteXmlOutput);
+}
+

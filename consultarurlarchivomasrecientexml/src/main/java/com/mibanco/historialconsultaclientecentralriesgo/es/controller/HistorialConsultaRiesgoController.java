@@ -5,8 +5,10 @@ import com.mibanco.historialconsultaclientecentralriesgo.es.gen.type.TipoDocumen
 import jakarta.ws.rs.core.Response;
 
 public class HistorialConsultaRiesgoController implements V1Historialconsultaclientecentralriesgo {
+
+
     @Override
     public Response consultarUrlArchivoMasRecienteXml(TipoDocumentoEnum tipoDocumento, Integer numeroDocumento, Integer digitoVerificacion) {
-        return Response.status(Response.Status.OK).entity("https://www.pruebaconsultaurl.com").build();
+        return Response.status(Response.Status.OK).entity("OK").build();
     }
 }

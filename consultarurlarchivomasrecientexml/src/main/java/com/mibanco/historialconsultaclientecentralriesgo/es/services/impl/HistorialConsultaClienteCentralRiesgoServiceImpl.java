@@ -7,6 +7,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 public class HistorialConsultaClienteCentralRiesgoServiceImpl implements HistorialConsultaClienteCentralRiesgoService {
     @Override
     public String consultarUrlMasReciente(String tipoDocumentoEnum, String numeroDocuemnte, String digitoVerificacion) {
-        return "https://www.pruebaconsultaurl.com";
+        return "url1";
     }
 }

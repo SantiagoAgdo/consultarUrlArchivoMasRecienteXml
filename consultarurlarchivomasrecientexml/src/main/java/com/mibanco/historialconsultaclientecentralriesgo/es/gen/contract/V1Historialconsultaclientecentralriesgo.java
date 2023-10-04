@@ -14,8 +14,8 @@ import java.util.List;
 import jakarta.validation.constraints.*;
 import jakarta.validation.Valid;
 
-@Path("/v1/es/historialCentralRiesgo/{tipoDocumento}/{numeroDocumento}/{digitoVerificacion}")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-09-25T09:25:46.946121900-05:00[America/Bogota]")
+@Path("/v1/es/central-riesgo/ubicacion/xml/{tipoDocumento}/{numeroDocumento}/{digitoVerificacion}")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-10-04T16:13:44.886348-05:00[America/Bogota]")
 public interface V1Historialconsultaclientecentralriesgo {
 
     @GET

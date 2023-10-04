@@ -49,8 +49,7 @@ public class HistorialConsultaClienteCentralRiesgoGrpcController extends Consult
 
         } catch (ApplicationExceptionValidation e) {
 
-            StatusException statusException = responseExceptionGrpc(Status.INVALID_ARGUMENT, e.getMessage());
-            responseObserver.onError(statusException);
+            responseObserver.onError(e);
 
         } catch (Exception e) {
             StatusException statusException = responseExceptionGrpc(Status.INTERNAL, e.getMessage());
@@ -61,7 +60,7 @@ public class HistorialConsultaClienteCentralRiesgoGrpcController extends Consult
 
     private StatusException responseExceptionGrpc(Status statusCode, String exceptionMessage) {
 
-        LOG.error(exceptionMessage + "Exception: " + exceptionMessage);
+        LOG.error("Exception: " + exceptionMessage);
 
         Metadata metadata = new Metadata();
         metadata.put(Metadata.Key.of("Error: ", Metadata.ASCII_STRING_MARSHALLER), exceptionMessage);

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("consultarUrlArchivoMasRecienteXmlOutput")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-09-25T09:25:46.946121900-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-10-04T16:13:44.886348-05:00[America/Bogota]")
 public class ConsultarUrlArchivoMasRecienteXmlOutput   {
   private @Valid String url;
 

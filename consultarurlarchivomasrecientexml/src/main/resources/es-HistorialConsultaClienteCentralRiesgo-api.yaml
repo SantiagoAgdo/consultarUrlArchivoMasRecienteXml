@@ -20,7 +20,7 @@ tags:
 #Endpoints de ES
 #----------------------------
 paths:
-  /v1/es/historialCentralRiesgo/{tipoDocumento}/{numeroDocumento}/{digitoVerificacion}:
+  /v1/es/central-riesgo/ubicacion/xml/{tipoDocumento}/{numeroDocumento}/{digitoVerificacion}:
     get:
       summary: consultarUrlArchivoMasRecienteXml
       operationId: consultarUrlArchivoMasRecienteXml
@@ -64,7 +64,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-
 
 #---------------------------------------------
 #Se declaran los Modelos/Schemas del servicio

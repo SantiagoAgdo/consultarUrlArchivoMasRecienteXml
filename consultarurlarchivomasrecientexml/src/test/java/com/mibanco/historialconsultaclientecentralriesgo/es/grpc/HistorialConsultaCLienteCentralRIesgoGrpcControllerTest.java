@@ -1,12 +1,9 @@
 package com.mibanco.historialconsultaclientecentralriesgo.es.grpc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mibanco.historialconsultaclientecentralriesgo.es.ConsultarUrlArchivoMasRecienteXmlGrpc;
 import com.mibanco.historialconsultaclientecentralriesgo.es.ConsultarUrlArchivoMasRecienteXmlInput;
-import com.mibanco.historialconsultaclientecentralriesgo.es.utils.mapper.HistorialConsultaClienteCentralRiesgoMapperGrpc;
 import io.quarkus.grpc.GrpcClient;
 import io.quarkus.test.junit.QuarkusTest;
-import jakarta.inject.Inject;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,12 +22,6 @@ public class HistorialConsultaCLienteCentralRIesgoGrpcControllerTest {
 
     @GrpcClient
     ConsultarUrlArchivoMasRecienteXmlGrpc client;
-
-    @Inject
-    ObjectMapper objectMapper;
-
-    @Inject
-    HistorialConsultaClienteCentralRiesgoMapperGrpc mapperGRPC;
 
     @BeforeEach
     public void setup() {

@@ -5,7 +5,6 @@ import com.mibanco.historialconsultaclientecentralriesgo.es.ResponseConsultaUrlA
 import com.mibanco.historialconsultaclientecentralriesgo.es.ConsultarUrlArchivoMasRecienteXmlInput;
 import com.mibanco.historialconsultaclientecentralriesgo.es.services.impl.HistorialConsultaClienteCentralRiesgoServiceImpl;
 import com.mibanco.historialconsultaclientecentralriesgo.es.utils.exception.ApplicationExceptionValidation;
-import com.mibanco.historialconsultaclientecentralriesgo.es.utils.mapper.HistorialConsultaClienteCentralRiesgoMapperGrpc;
 import com.mibanco.historialconsultaclientecentralriesgo.es.utils.validator.HistorialConsultaClienteCentralRiesgoValidator;
 import io.grpc.Metadata;
 import io.grpc.Status;
@@ -25,8 +24,6 @@ public class HistorialConsultaClienteCentralRiesgoGrpcController extends Consult
     @Inject
     HistorialConsultaClienteCentralRiesgoServiceImpl service;
 
-    @Inject
-    HistorialConsultaClienteCentralRiesgoMapperGrpc mapper;
 
     @Inject
     HistorialConsultaClienteCentralRiesgoValidator validator;
